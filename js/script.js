@@ -1,29 +1,35 @@
 // Generate Gallery
-let card = '';
-contacts.forEach(contact => {
-  card += `
+const loadGallery = () => {
+  let card = '';
+  contacts.forEach(contact => {
+    card += `
   <div class="card">
                 <div class="card-img-container">
-                    <img class="card-img" src="${contact.image}" alt="profile picture">
+                    <img class="card-img" src="${
+                      contact.image
+                    }" alt="profile picture">
                 </div>
                 <div class="card-info-container">
-                    <h3 id="name" class="card-name cap">${
-    contact.name
-    } ${contact.surname}</h3>
+                    <h3 id="name" class="card-name cap">${contact.name} ${
+      contact.surname
+    }</h3>
                     <p class="card-text">${contact.phone}</p>
                     <p class="card-text cap">${contact.address}</p>
                 </div>
             </div>
   `;
-  document.getElementById('gallery').innerHTML = card;
-});
+    document.getElementById('gallery').innerHTML = card;
+  });
+};
+
+window.onload = loadGallery();
 
 // Show Modal
 const cards = document.getElementsByClassName('card');
 
 // Listen for click event on each card
 for (let i = 0; i < cards.length; i += 1) {
-  cards[i].addEventListener('click', function (e) {
+  cards[i].addEventListener('click', function(e) {
     let modal = '';
     const contact = contacts[i];
 
@@ -33,10 +39,16 @@ for (let i = 0; i < cards.length; i += 1) {
         <div class="modal">
           <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
           <div class="modal-info-container">
-              <img class="modal-img" src="${contact.image}" alt="profile picture">
-              <h3 id="name" class="modal-name cap">${contact.name} ${contact.surname}</h3>
+              <img class="modal-img" src="${
+                contact.image
+              }" alt="profile picture">
+              <h3 id="name" class="modal-name cap">${contact.name} ${
+      contact.surname
+    }</h3>
               <hr>
-              <p class="modal-text"><a href="tel:${contact.phone}">${contact.phone}</a></p>
+              <p class="modal-text"><a href="tel:${contact.phone}">${
+      contact.phone
+    }</a></p>
               <p class="modal-text">${contact.address}</p>
           </div>
         </div>
@@ -52,10 +64,67 @@ for (let i = 0; i < cards.length; i += 1) {
     // Close Modal
     const closeButton = document.getElementById('modal-close-btn');
 
-    closeButton.addEventListener('click', function (e) {
+    closeButton.addEventListener('click', function(e) {
       this.parentNode.style.display = 'none';
       // remove modal
       document.getElementById('gallery').removeChild(overlay);
-    })
-  })
+    });
+  });
 }
+
+// Add Contact
+const addButton = document.getElementById('add-contact-btn');
+addButton.addEventListener('click', function(e) {
+  let modal = '';
+  modal = `
+      <div class="modal-container">
+        <div class="modal">
+          <div class="modal-info-container">
+              <form action="#" enctype="multipart/form-data" method="post">
+              <label for="firstname">Name:</label>
+              <input type="text" id="firstname" name="firstname">
+              <label for="surname">Surname:</label>
+              <input type="text" id="surname" name="surname">
+              <label for="phone">Phone:</label>
+              <input type="text" id="phone" name="phone" placeholder="(108)-805-9730">
+              <label for="address">Address:</label>
+              <input type="text" id="address" name="address">
+              <label for="fileToUpload">Image:</label>
+              <input type="file" name="fileToUpload" id="fileToUpload">
+              <button id="add-contact" type="submit">Add Contact</button>
+              </form>
+          </div>
+        </div>
+      </div>
+      `;
+
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.setAttribute('id', 'overlay');
+  overlay.innerHTML = modal;
+  document.getElementById('gallery').appendChild(overlay);
+
+  // Submit Form
+  btnSubmit = document.getElementById('add-contact');
+  btnSubmit.addEventListener('click', function(e) {
+    e.preventDefault();
+    const filePath = document.getElementById('fileToUpload').value;
+    const filename = filePath.substring(filePath.lastIndexOf('\\') + 1);
+    const newContact = {
+      name: document.getElementById('firstname').value,
+      surname: document.getElementById('surname').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value,
+      image: '../images/' + filename
+    };
+
+    contacts.push(newContact);
+
+    // Close Modal
+    this.parentNode.style.display = 'none';
+    document.getElementById('gallery').removeChild(overlay);
+
+    // Load Gallery
+    loadGallery();
+  });
+});
