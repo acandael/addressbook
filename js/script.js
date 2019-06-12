@@ -6,13 +6,13 @@ const loadGallery = () => {
   <div class="card">
                 <div class="card-img-container">
                     <img class="card-img" src="${
-      contact.image
-      }" alt="profile picture">
+                      contact.image
+                    }" alt="profile picture">
                 </div>
                 <div class="card-info-container">
                     <h3 id="name" class="card-name cap">${contact.name} ${
       contact.surname
-      }</h3>
+    }</h3>
                     <p class="card-text">${contact.phone}</p>
                     <p class="card-text cap">${contact.address}</p>
                 </div>
@@ -21,7 +21,6 @@ const loadGallery = () => {
     document.getElementById('gallery').innerHTML = card;
   });
 };
-
 window.onload = loadGallery();
 
 // Show Modal
@@ -29,7 +28,7 @@ const cards = document.getElementsByClassName('card');
 
 // Listen for click event on each card
 for (let i = 0; i < cards.length; i += 1) {
-  cards[i].addEventListener('click', function (e) {
+  cards[i].addEventListener('click', function(e) {
     let modal = '';
     const contact = contacts[i];
 
@@ -40,15 +39,15 @@ for (let i = 0; i < cards.length; i += 1) {
           <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
           <div class="modal-info-container">
               <img class="modal-img" src="${
-      contact.image
-      }" alt="profile picture">
+                contact.image
+              }" alt="profile picture">
               <h3 id="name" class="modal-name cap">${contact.name} ${
       contact.surname
-      }</h3>
+    }</h3>
               <hr>
               <p class="modal-text"><a href="tel:${contact.phone}">${
       contact.phone
-      }</a></p>
+    }</a></p>
               <p class="modal-text">${contact.address}</p>
           </div>
         </div>
@@ -64,7 +63,7 @@ for (let i = 0; i < cards.length; i += 1) {
     // Close Modal
     const closeButton = document.getElementById('modal-close-btn');
 
-    closeButton.addEventListener('click', function (e) {
+    closeButton.addEventListener('click', function(e) {
       this.parentNode.style.display = 'none';
       // remove modal
       document.getElementById('gallery').removeChild(overlay);
@@ -74,7 +73,7 @@ for (let i = 0; i < cards.length; i += 1) {
 
 // Add Contact
 const addButton = document.getElementById('add-contact-btn');
-addButton.addEventListener('click', function (e) {
+addButton.addEventListener('click', function(e) {
   let modal = '';
   modal = `
       <div class="modal-container">
@@ -119,7 +118,7 @@ addButton.addEventListener('click', function (e) {
 
   // Close Modal
   const closeButton = document.getElementById('modal-close-btn');
-  closeButton.addEventListener('click', function (e) {
+  closeButton.addEventListener('click', function(e) {
     this.parentNode.style.display = 'none';
     // remove modal
     document.getElementById('gallery').removeChild(overlay);
@@ -127,7 +126,7 @@ addButton.addEventListener('click', function (e) {
 
   // Submit Form
   btnSubmit = document.getElementById('add-contact');
-  btnSubmit.addEventListener('click', function (e) {
+  btnSubmit.addEventListener('click', function(e) {
     e.preventDefault();
     const filePath = document.getElementById('fileToUpload').value;
     const filename = filePath.substring(filePath.lastIndexOf('\\') + 1);
@@ -148,4 +147,31 @@ addButton.addEventListener('click', function (e) {
     // Load Gallery
     loadGallery();
   });
+});
+
+var options = {
+  shouldSort: false,
+  threshold: 0.6,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 32,
+  minMatchCharLength: 1,
+  keys: ['name', 'surname']
+};
+var fuse = new Fuse(contacts, options);
+
+const searchSubmit = document.getElementById('search-submit');
+const searchInput = document.getElementById('search-input');
+let input = '';
+
+searchInput.addEventListener('keypress', function(e) {
+  input = document.getElementById('search-input').value;
+  contacts = fuse.search(input);
+  loadGallery();
+});
+
+searchSubmit.addEventListener('click', function(e) {
+  input = document.getElementById('search-input').value;
+  contacts = fuse.search(input);
+  loadGallery();
 });

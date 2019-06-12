@@ -251,7 +251,7 @@ header h1 {
   display: block;
 }
 
-.modal-form input[type=text] {
+.modal-form input[type='text'] {
   width: 95%;
   padding: 10px 15px 15px;
   margin: 10px auto auto;
@@ -268,6 +268,10 @@ header h1 {
   transition: 0.4s ease-out;
   outline: none;
 }
+
+/* =====================================
+    Autocomplete
+======================================== */
 
 /* ===================================== 
    Media Queries
@@ -311,7 +315,6 @@ header h1 {
 ======================================== */
 
 @media (min-width: 1024px) {
-  
   .search-input {
     width: 297px;
   }
