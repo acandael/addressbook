@@ -7,7 +7,7 @@ addButton.addEventListener('click', function (e) {
         <div class="modal">
         <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
           <div class="modal-info-container">
-              <form action="#" class="modal-form" enctype="multipart/form-data" method="post">
+              <form action="#" class="modal-form" enctype="multipart/form-data" method="POST">
               <div>
               <label class="modal-name cap" for="firstname">Name:</label>
               <input class="modal-text" type="text" id="firstname" name="firstname">

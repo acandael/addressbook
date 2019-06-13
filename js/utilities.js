@@ -16,3 +16,6 @@ const closeModal = () => {
     document.getElementById('gallery').removeChild(overlay);
   });
 };
+
+
+

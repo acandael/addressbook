@@ -25,6 +25,7 @@ for (let i = 0; i < cards.length; i += 1) {
       }</a></p>
               <p class="modal-text">${contact.address}</p>
           </div>
+          <button id="modal-del-btn" class="contactDelete" type="button" data-id="${i}">Delete</button>
         </div>
       </div>
       `;
@@ -35,5 +36,15 @@ for (let i = 0; i < cards.length; i += 1) {
 
     // Close Modal
     closeModal();
+
+    // Delete Contact
+    const deleteButton = document.getElementById('modal-del-btn');
+
+    deleteButton.addEventListener('click', function (e) {
+      let remId = e.target.getAttribute('data-id');
+      contacts.splice(remId, 1);
+      document.getElementById('gallery').removeChild(overlay);
+      loadGallery();
+    })
   });
 }
