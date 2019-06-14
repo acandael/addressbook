@@ -1,30 +1,31 @@
-// Show Modal
-const cards = document.getElementsByClassName('card');
+const gallery = document.getElementById('gallery');
 
-const createModal = index => {
-  cards[index].addEventListener('click', function(e) {
+gallery.addEventListener('click', function (event) {
+
+  if (event.target.hasAttribute('data-card')) {
+    const id = event.target.getAttribute('data-card');
     let modal = '';
-    const contact = contacts[index];
-    console.log(contact);
+    const contact = contacts[id];
+
     // Create template literal
     modal = `
         <div class="modal-container">
           <div class="modal">
-            <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
+            <button type="button" id="modal-close-btn" class="modal-close-btn"><strong data-close="${id}">X</strong></button>
             <div class="modal-info-container">
                 <img class="modal-img" src="${
-                  contact.image
-                }" alt="profile picture">
+      contact.image
+      }" alt="profile picture">
                 <h3 id="name" class="modal-name cap">${contact.name} ${
       contact.surname
-    }</h3>
+      }</h3>
                 <hr>
                 <p class="modal-text"><a href="tel:${contact.phone}">${
       contact.phone
-    }</a></p>
+      }</a></p>
                 <p class="modal-text">${contact.address}</p>
             </div>
-            <button id="modal-del-btn" class="contactDelete" type="button" data-id="${index}">Delete</button>
+            <button id="modal-del-btn" class="contactDelete" type="button" data-id="${id}">Delete</button>
           </div>
         </div>
         `;
@@ -32,17 +33,21 @@ const createModal = index => {
     // Create Overlay
     createOverlay(modal);
 
-    // Close Modal
-    closeModal();
-
     // Delete Contact
     const deleteButton = document.getElementById('modal-del-btn');
 
-    deleteButton.addEventListener('click', function(e) {
-      let remId = e.target.getAttribute('data-id');
-      contacts.splice(index, 1);
-      document.getElementById('gallery').removeChild(overlay);
-      loadGallery();
-    });
-  });
-};
+  }
+
+  if (event.target.hasAttribute('data-id')) {
+    let remId = event.target.getAttribute('data-id');
+    contacts.splice(remId, 1);
+    document.getElementById('gallery').removeChild(overlay);
+    loadGallery();
+  }
+
+  if (event.target.hasAttribute('data-close')) {
+    event.target.parentNode.style.display = 'none';
+    // remove modal
+    document.getElementById('gallery').removeChild(overlay);
+  }
+});
