@@ -1,6 +1,6 @@
 // Add Contact
 const addButton = document.getElementById('add-contact-btn');
-addButton.addEventListener('click', function (e) {
+addButton.addEventListener('click', function(e) {
   let modal = '';
   modal = `
       <div class="modal-container">
@@ -45,19 +45,31 @@ addButton.addEventListener('click', function (e) {
 
   // Submit Form
   btnSubmit = document.getElementById('add-contact');
-  btnSubmit.addEventListener('click', function (e) {
+  btnSubmit.addEventListener('click', function(e) {
     e.preventDefault();
+
+    const name = document.getElementById('firstname').value;
+    const surname = document.getElementById('surname').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
     const filePath = document.getElementById('fileToUpload').value;
     const filename = filePath.substring(filePath.lastIndexOf('\\') + 1);
+    const image = '../images/' + filename;
+
     const newContact = {
-      name: document.getElementById('firstname').value,
-      surname: document.getElementById('surname').value,
-      phone: document.getElementById('phone').value,
-      address: document.getElementById('address').value,
-      image: '../images/' + filename
+      name,
+      surname,
+      phone,
+      address,
+      image
     };
 
-    contacts.push(newContact);
+    // Check if fields are filled out
+    const isNull = name != '' && surname != '' && phone != '' && address != '';
+
+    if (isNull) {
+      contacts.push(newContact);
+    }
 
     // Close Modal after submit
     closeModal();

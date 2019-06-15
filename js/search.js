@@ -13,13 +13,13 @@ const searchSubmit = document.getElementById('search-submit');
 const searchInput = document.getElementById('search-input');
 let input = '';
 
-searchInput.addEventListener('keypress', function (e) {
+searchInput.addEventListener('keypress', function(e) {
   input = document.getElementById('search-input').value;
   contacts = fuse.search(input);
   loadGallery();
 });
 
-searchSubmit.addEventListener('click', function (e) {
+searchSubmit.addEventListener('click', function(e) {
   input = document.getElementById('search-input').value;
   contacts = fuse.search(input);
   loadGallery();

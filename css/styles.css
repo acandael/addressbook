@@ -269,6 +269,18 @@ header h1 {
   outline: none;
 }
 
+.contactDelete {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 0, 0, 0.8);
+  width: 130px;
+  height: 30px;
+  margin-top: 10px;
+  outline: none;
+  border-radius: 0.25em;
+  border: 1px solid rgba(50, 50, 50, 0.3);
+}
+
 /* =====================================
     Autocomplete
 ======================================== */
