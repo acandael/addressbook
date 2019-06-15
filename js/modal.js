@@ -1,7 +1,6 @@
 const gallery = document.getElementById('gallery');
 
-gallery.addEventListener('click', function (event) {
-
+gallery.addEventListener('click', function(event) {
   if (event.target.hasAttribute('data-card')) {
     const id = event.target.getAttribute('data-card');
     let modal = '';
@@ -14,15 +13,15 @@ gallery.addEventListener('click', function (event) {
             <button type="button" id="modal-close-btn" class="modal-close-btn"><strong data-close="${id}">X</strong></button>
             <div class="modal-info-container">
                 <img class="modal-img" src="${
-      contact.image
-      }" alt="profile picture">
+                  contact.image
+                }" alt="profile picture">
                 <h3 id="name" class="modal-name cap">${contact.name} ${
       contact.surname
-      }</h3>
+    }</h3>
                 <hr>
                 <p class="modal-text"><a href="tel:${contact.phone}">${
       contact.phone
-      }</a></p>
+    }</a></p>
                 <p class="modal-text">${contact.address}</p>
             </div>
             <button id="modal-del-btn" class="contactDelete" type="button" data-id="${id}">Delete</button>
@@ -35,7 +34,6 @@ gallery.addEventListener('click', function (event) {
 
     // Delete Contact
     const deleteButton = document.getElementById('modal-del-btn');
-
   }
 
   if (event.target.hasAttribute('data-id')) {

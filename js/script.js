@@ -3,11 +3,11 @@ const loadGallery = () => {
   let card = '';
   contacts.forEach((contact, index) => {
     card += `
-  <div data-card="${index}" class="card">
+  <div class="card">
                 <div class="card-img-container">
-                    <img class="card-img" src="${
-                      contact.image
-                    }" alt="profile picture">
+                    <img data-card="${index}" class="card-img" src="${
+      contact.image
+    }" alt="profile picture">
                 </div>
                 <div class="card-info-container">
                     <h3 id="name" class="card-name cap">${contact.name} ${
