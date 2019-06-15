@@ -5,7 +5,6 @@ gallery.addEventListener('click', function(event) {
     const id = event.target.getAttribute('data-card');
     let modal = '';
     const contact = contacts[id];
-
     // Create template literal
     modal = `
         <div class="modal-container">
@@ -31,16 +30,11 @@ gallery.addEventListener('click', function(event) {
 
     // Create Overlay
     createOverlay(modal);
-
-    // Delete Contact
-    const deleteButton = document.getElementById('modal-del-btn');
   }
 
   if (event.target.hasAttribute('data-id')) {
     let remId = event.target.getAttribute('data-id');
-    contacts.splice(remId, 1);
-    document.getElementById('gallery').removeChild(overlay);
-    loadGallery();
+    deleteContact(remId);
   }
 
   if (event.target.hasAttribute('data-close')) {

@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link href="css/normalize.css" rel="stylesheet" />
-  <link href="css/styles.css" rel="stylesheet" />
-  <title>Document</title>
-</head>
+  <body>
+    <header>
+      <div class="header-inner-container">
+        <div class="header-text-container">
+          <h1>ADDRESS BOOK</h1>
+        </div>
+        <div class="add-container">
+          <form action="#" method="get">
+            <input
+              type="submit"
+              value="&#x002B;"
+              id="add-contact-btn"
+              class="add-submit"
+            />
+          </form>
+        </div>
+        <div class="search-container">
+          <form autocomplete="on" action="#" method="get">
+            <input
+              type="search"
+              id="search-input"
+              class="search-input"
+              placeholder="Search..."
+            />
+            <input
+              type="submit"
+              value="&#x1F50D;"
+              id="search-submit"
+              class="search-submit"
+            />
+          </form>
+        </div>
+      </div>
+    </header>
 
-<body>
-  <header>
-    <div class="header-inner-container">
-      <div class="header-text-container">
-        <h1>ADDRESS BOOK</h1>
-      </div>
-      <div class="add-container">
-        <form action="#" method="get">
-          <input type="submit" value="&#x002B;" id="add-contact-btn" class="add-submit" />
-        </form>
-      </div>
-      <div class="search-container">
-        <form autocomplete="on" action="#" method="get">
-          <input type="search" id="search-input" class="search-input" placeholder="Search..." />
-          <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit" />
-        </form>
-      </div>
-    </div>
-  </header>
-
-  <div id="gallery" class="gallery">
-    <!-- ======================
+    <div id="gallery" class="gallery">
+      <!-- ======================
                     Gallery markup: 
                     You can use the commented out markup below as a template
                     for each of your Gallery items, but you must use JS to 
@@ -49,9 +63,9 @@
                         </div>
                     </div>
                 ======================= -->
-  </div>
+    </div>
 
-  <!-- =======================
+    <!-- =======================
                 Modal markup:
                 You can use the commented out markup below as a template
                 for your modal, but you must use JS to create and append 
@@ -79,16 +93,13 @@
                     </div>
                 </div>
             ======================== -->
-  <script src="js/contacts.js"></script>
-  <script src="js/utilities.js"></script>
-  <script src="js/fuse.min.js"></script>
-  <script src="js/search.js"></script>
-  <script src="js/modal.js"></script>
-  <script src="js/script.js"></script>
-  <script src="js/addContact.js"></script>
-
-
-
-</body>
-
+    <script src="js/contacts.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/fuse.min.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/deleteContact.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/addContact.js"></script>
+  </body>
 </html>
