@@ -3,10 +3,10 @@ const gallery = document.getElementById('gallery');
 gallery.addEventListener('click', function(event) {
   if (event.target.hasAttribute('data-card')) {
     const id = event.target.getAttribute('data-card');
-    let modal = '';
     const contact = contacts[id];
+
     // Create template literal
-    modal = `
+    const modal = `
         <div class="modal-container">
           <div class="modal">
             <button type="button" id="modal-close-btn" class="modal-close-btn"><strong data-close="${id}">X</strong></button>
