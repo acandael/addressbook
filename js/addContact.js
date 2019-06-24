@@ -1,3 +1,5 @@
+'use strict';
+
 // Add Contact
 const addButton = document.getElementById('add-contact-btn');
 addButton.addEventListener('click', function(e) {
@@ -44,7 +46,7 @@ addButton.addEventListener('click', function(e) {
   closeModal();
 
   // Submit Form
-  btnSubmit = document.getElementById('add-contact');
+  const btnSubmit = document.getElementById('add-contact');
   btnSubmit.addEventListener('click', function(e) {
     e.preventDefault();
 

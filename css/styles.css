@@ -299,8 +299,6 @@ header h1 {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    /* padding-right: 25px;
-    padding-left: 25px; */
   }
 
   .header-text-container {

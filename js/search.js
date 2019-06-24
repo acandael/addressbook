@@ -1,3 +1,5 @@
+'use strict';
+
 const options = {
   shouldSort: false,
   threshold: 0.2,

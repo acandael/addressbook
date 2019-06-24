@@ -1,3 +1,5 @@
+'use strict';
+
 // Generate Gallery
 const loadGallery = () => {
   if (contacts.length > 0) {

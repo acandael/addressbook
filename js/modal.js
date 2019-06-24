@@ -1,3 +1,5 @@
+'use strict';
+
 const gallery = document.getElementById('gallery');
 
 gallery.addEventListener('click', function(event) {
