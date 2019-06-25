@@ -1,3 +1,5 @@
+'use strict';
+
 // Delete Contact
 const deleteContact = remId => {
   contacts.splice(remId, 1);

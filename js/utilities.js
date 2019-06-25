@@ -1,3 +1,5 @@
+'use strict';
+
 // Create overlay
 const createOverlay = modal => {
   const overlay = document.createElement('div');
